@@ -6,6 +6,9 @@ window.onload = function() {
         // pokemonIntro.play();
 
         var game = {
+
+            userChoice: "",
+
             charmander: {
                 HP: 114,
                 moves: {
@@ -49,17 +52,36 @@ window.onload = function() {
             },
 
             setStage: function() {
-                $(".jumbotron").fadeOut("slow");
-                $(".background").fadeTo("slow",0.4);
-                // var stage = $("<div>");
-                // stage.attr("class","setStage")
-                // $("#hiddenDiv").attr("class","row setStage")
-                // $("#hiddenDiv").css("display","block");
+                $(".jumbotron").fadeOut("fast");
+                $(".background").css("background-image","url('assets/images/nintendo-3ds-black-open.jpg')");
+                $(".background").css("background-size","100% 100%");
+                $("header").fadeIn("slow");
+                $("#hiddenDiv").fadeIn("slow");                
+            },
 
+            pokemonSelect: function() {
+                if(this.userChoice === "charmanderStart") {
+                    $("#pokemon2Img").attr("src","assets/images/charmanderBack.gif");
+                    $("#pokemon1Img").attr("src","assets/images/squirtle-3.gif");
+                    this.setStage();
+                } else if (this.userChoice === "squirtleStart") {
+                    $("#pokemon2Img").attr("src","assets/images/squirtleBack.gif");
+                    $("#pokemon1Img").attr("src","assets/images/bulbasaur-3.gif")
+                    this.setStage();
+                } else if (this.userChoice === "bulbasaurStart") {
+                    $("#pokemon2Img").attr("src","assets/images/bulbasaurBack.gif");
+                    $("#pokemon1Img").attr("src","assets/images/charmander-3.gif");
+                    this.setStage();
+                };
             }
 
         }
 
-        game.setStage();
+        $(window).click(function(event){
+            game.userChoice = event.target.id;
+            console.log(game.userChoice);
+            game.pokemonSelect();
+        });
+        
 
 }

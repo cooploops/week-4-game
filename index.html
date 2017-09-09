@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
 </head>
 <body>
     <div class="container">
 	    <header>
-	    	<h2 class="text-center">Prepare to Battle</h2>
+	    	<h2 id="battleText" class="text-center">Prepare to Battle</h2>
 	    </header>
 	    <main>
 	    <!-- setup everything here and just hide until user clicks pokemon then show -->
@@ -19,12 +20,12 @@
 	    			<div class="col-sm-10">
 	    			</div>
 		    		<div id="pokemon1" class="col-2-sm">
-		    			<img src="assets/images/squirtle-3.gif" class="img-fluid">
+		    			<img id="pokemon1Img" src="assets/images/charmander-3.gif">
 		    		</div>
 	    		</div>
 	    		<div class="row justify-content-start">
-		    		<div id="pokemon2" class="col-3-sm pl-3">
-		    			<img src="assets/images/charmanderBack.gif" class="img-fluid">
+		    		<div id="pokemon2" class="col-3-sm pb-3">
+		    			<img id="pokemon2Img" src="assets/images/squirtleBack.gif">
 		    		</div>
 		    		<div class="col-9-sm">
 		    		</div>
@@ -34,12 +35,12 @@
 	        <div class="jumbotron">
 	        	<img src="assets/images/pokelogo.png" class="img-fluid">
 	            <h1 class="display-3">Welcome Trainer!</h1>
-	            <p class="lead">This is my week 4 homework RPG style game. I chose to emulate the original pokemon game because I thought it would be challenging fpr me but also fun. Please choose between one of the three Pokemon below to start battling!</p>
+	            <p class="lead">This is my week 4 homework RPG style game. I chose to emulate the original pokemon game because I thought it would be challenging fpr me but also fun. Please click one of the three Pokemon below to start battling with!</p>
 	            <hr class="my-4">
 	            <div class="row">
 	            	<div class="col-sm-4">
 		            	<div class="card">
-		  					<img id="charmander" class="card-img-top mx-auto" src="assets/images/charmander-3.gif" alt="Card image cap">
+		  					<a href="#" class="text-center"><img id="charmanderStart" class="card-img-top mx-auto" src="assets/images/charmander-3.gif" href="#" alt="Card image cap"></a>
 		  					<div class="card-body">
 		    					<h4 class="card-title text-center text-danger">Charmander</h4>
 		    					<p class="card-text">A fire-type Pokemon. The flame on its tail indicates Charmander's life force. If it is healthy, the flame burns brightly.</p>
@@ -53,7 +54,7 @@
 	            	</div>
 	            	<div class="col-sm-4">
 	            		<div class="card">
-		  					<img id="bulbasaur" class="card-img-top mx-auto" src="assets/images/bulbasaur-3.gif" alt="Card image cap">
+		  					<a href="#" class="text-center"><img id="bulbasaurStart" class="card-img-top mx-auto" src="assets/images/bulbasaur-3.gif" alt="Card image cap"></a>
 		  					<div class="card-body">
 		    					<h4 class="card-title text-center text-success">Bulbasaur</h4>
 		    					<p class="card-text">A grass-type Pokemon. A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokemon.</p>
@@ -67,7 +68,7 @@
 	            	</div>
 	            	<div class="col-sm-4">
 						<div class="card">
-		  					<img id="squirtle" class="card-img-top mx-auto" src="assets/images/squirtle-3.gif" alt="Card image cap">
+		  					<a href="#" class="text-center"><img id="squirtleStart" class="card-img-top mx-auto" src="assets/images/squirtle-3.gif" alt="Card image cap"></a>
 		  					<div class="card-body">
 		    					<h4 class="card-title text-center text-primary">Squirtle</h4>
 		    					<p class="card-text">A water-type Pokemon. It shelters itself in its shell, then strikes back with spouts of water at every opportunity.</p>
