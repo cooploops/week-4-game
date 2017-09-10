@@ -33,6 +33,7 @@ header{
 	position:relative;
 	z-index:3;
 	height: 100%;
+	bottom:0;
 }
 
 .jumbotron {
@@ -53,15 +54,49 @@ header{
  }
 
  #pokemon1 {
- 	padding-right:15%;
+ 	margin-right:10%;
  	margin-bottom:4em;
  }
 
- #pokemon2 {
-	padding-left:25%;
+ #pokemon2Img {
+ 	margin-left:55%;
  }
 
  #pokemon2Img {
  	width:8em;
  }
+
+ .moveList {
+ 	margin-top:10.5%;
+ 	margin-left:11%;
+ 	margin-right:11%;
+ }
+
+.firstRow {
+	height:10em;
+}
+
+#atk1 {
+	width:50%;
+	border: 2px solid black;
+}
+
+#atk2 {
+	width:50%;
+	border: 2px solid black;
+}
+
+.secondRow {
+	height:10em;
+}
+
+#atk3 {
+	width:50%;
+	border: 2px solid black;
+}
+
+#atk4 {
+	width:50%;
+	border: 2px solid black;
+}
 
