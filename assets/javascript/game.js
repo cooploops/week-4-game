@@ -63,6 +63,11 @@ window.onload = function() {
                 if(this.userChoice === "charmanderStart") {
                     $("#pokemon2Img").attr("src","assets/images/charmanderBack.gif");
                     $("#pokemon1Img").attr("src","assets/images/squirtle-3.gif");
+                    var moveList = $("<div>");
+                    moveList.attr("class","moveList pt-5");
+                    $(".container").append(moveList);
+                    moveList.html("<button id='atk1' class='mx-auto'>Scratch</button> <br> <button id='atk2' class='mx-auto'>Flamethrower</<button> <br> <button id='atk3' class='mx-auto'>Flameburst</button> <br> <button id='atk4' class='mx-auto'>Inferno</button>")
+
                     this.setStage();
                 } else if (this.userChoice === "squirtleStart") {
                     $("#pokemon2Img").attr("src","assets/images/squirtleBack.gif");
