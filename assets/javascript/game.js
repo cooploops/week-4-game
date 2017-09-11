@@ -28,7 +28,12 @@ window.onload = function() {
                     flameThrower: 12,
                     flameBurst: 15,
                     inferno: 25,
-
+                },
+                movesPP: {
+                    scratchPP: 30,
+                    flameThrowerPP: 15,
+                    flameBurstPP: 10,
+                    infernoPP: 5
                 }
             },
 
@@ -38,9 +43,14 @@ window.onload = function() {
                 moves: {
                     tackle: 7,
                     waterGun: 15,
-                    bubble: 15,
+                    bubble: 12,
                     hydroPump: 20,
-
+                },
+                movesPP: {
+                    tacklePP: 25,
+                    waterGunPP: 10,
+                    bubblePP: 15,
+                    hydroPumpPP: 5
                 }
             },
 
@@ -52,6 +62,12 @@ window.onload = function() {
                     vineWhip: 10,
                     razorLeaf: 15,
                     solarBeam: 20,
+                },
+                movesPP: {
+                    tacklePP: 25,
+                    vineWhipPP: 20,
+                    razorLeafPP: 10,
+                    solarBeamPP: 5
                 }
             },
 
@@ -74,6 +90,7 @@ window.onload = function() {
                 $("#poke2HP").css("width",pctHealth + "%");
                 console.log(randomAttack);
                 this.updatePoke2HPBar();
+                this.squirtle.movesPP.scratch--;
             },
 
             charmanderAttack: function() {
@@ -158,7 +175,7 @@ window.onload = function() {
                     moveList.attr("class","moveList");
                     moveList.addClass("moveList");
                     $(".container").append(moveList);
-                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Scratch</button> <button id='atk2' class='btn btn-lg btn-danger'>Flamethrower</button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-danger'>Flameburst</button> <button id='atk4' class='btn btn-lg btn-danger'>Inferno</button></div>")
+                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Scratch <span id='atk1PP'>30/30</span></button> <button id='atk2' class='btn btn-lg btn-danger'>Flamethrower <span id='atk2PP'>15/15</span></button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-danger'>Flameburst <span id='atk3PP'>10/10</span></button> <button id='atk4' class='btn btn-lg btn-danger'>Inferno <span id='atk4PP'>5/5</span></button></div>")
                    
                     // set stage
                     this.setStage();
@@ -175,8 +192,15 @@ window.onload = function() {
                         $("#poke1HP").text(health);
                         $("#poke1HP").css("width",pctHealth +"%");
                         game.squirtleAttack();
+                        var remaining = --game.charmander.movesPP.scratchPP;
+                        console.log(remaining);
+                        $("#atk1PP").text(remaining + "/30");
                         game.updatePoke1HPBar();
                         game.winLoseCheck();
+                        if(remaining === 0){
+                            $("#atk1").addClass("disabled");
+                            $("#atk1").attr("disabled","true");
+                         }
 
                     });
                     $("#atk2").click(function(){
@@ -193,8 +217,15 @@ window.onload = function() {
                         $("#poke1HP").text(health);
                         $("#poke1HP").css("width",pctHealth +"%");
                          game.squirtleAttack();
+                        var remaining = --game.charmander.movesPP.flameThrowerPP;
+                        console.log(remaining);
+                        $("#atk2PP").text(remaining + "/15");
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        if(remaining === 0){
+                            $("#atk2").addClass("disabled");
+                            $("#atk2").attr("disabled","true");
+                         }
                     });
                     $("#atk3").click(function(){
                         console.log(game.squirtle.HP);
@@ -210,8 +241,15 @@ window.onload = function() {
                         $("#poke1HP").text(health);
                         $("#poke1HP").css("width",pctHealth +"%");
                          game.squirtleAttack();
+                        var remaining = --game.charmander.movesPP.flameBurstPP;
+                        console.log(remaining);
+                        $("#atk3PP").text(remaining + "/10");
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                         if(remaining === 0){
+                            $("#atk3").addClass("disabled");
+                            $("#atk3").attr("disabled","true");
+                         }
                     });
                     $("#atk4").click(function(){
                         console.log(game.squirtle.HP);
@@ -227,8 +265,15 @@ window.onload = function() {
                         $("#poke1HP").text(health);
                         $("#poke1HP").css("width",pctHealth +"%");
                          game.squirtleAttack();
+                        var remaining = --game.charmander.movesPP.infernoPP;
+                        console.log(remaining);
+                        $("#atk4PP").text(remaining + "/5");
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                         if(remaining === 0){
+                            $("#atk4").addClass("disabled");
+                            $("#atk4").attr("disabled","true");
+                         }
                     });
                 } else if (this.userChoice === "squirtleStart") {
                     // setup pokemon
@@ -252,7 +297,7 @@ window.onload = function() {
                     moveList.attr("class","moveList");
                     moveList.addClass("moveList");
                     $(".container").append(moveList);
-                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Tackle</button> <button id='atk2' class='btn btn-lg btn-primary'>Water Gun</button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-primary'>Bubble</button> <button id='atk4' class='btn btn-lg btn-primary'>Hydro Pump</button></div>")
+                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Tackle <span id='atk1PP'>30/30</span></button> <button id='atk2' class='btn btn-lg btn-primary'>Water Gun <span id='atk2PP'>10/10</span></button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-primary'>Bubble <span id='atk3PP'>15/15</span></button> <button id='atk4' class='btn btn-lg btn-primary'>Hydro Pump <span id='atk4PP'>5/5</span></button></div>")
 
                     // set stage
                     this.setStage();
@@ -271,6 +316,13 @@ window.onload = function() {
                          game.bulbasaurAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.squirtle.movesPP.tacklePP;
+                        console.log(remaining);
+                        $("#atk1PP").text(remaining + "/30");
+                        if(remaining === 0){
+                            $("#atk1").addClass("disabled");
+                            $("#atk1").attr("disabled","true");
+                         }
                     });
                     $("#atk2").click(function(){
                         console.log(game.bulbasaur.HP);
@@ -288,6 +340,13 @@ window.onload = function() {
                          game.bulbasaurAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.squirtle.movesPP.waterGunPP;
+                        console.log(remaining);
+                        $("#atk2PP").text(remaining + "/10");
+                        if(remaining === 0){
+                            $("#atk2").addClass("disabled");
+                            $("#atk2").attr("disabled","true");
+                         }
                     });
                     $("#atk3").click(function(){
                         console.log(game.bulbasaur.HP);
@@ -305,6 +364,13 @@ window.onload = function() {
                          game.bulbasaurAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.squirtle.movesPP.bubblePP;
+                        console.log(remaining);
+                        $("#atk3PP").text(remaining + "/15");
+                        if(remaining === 0){
+                            $("#atk3").addClass("disabled");
+                            $("#atk3").attr("disabled","true");
+                         }
                     });
                     $("#atk4").click(function(){
                         console.log(game.bulbasaur.HP);
@@ -322,6 +388,13 @@ window.onload = function() {
                          game.bulbasaurAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.squirtle.movesPP.hydroPumpPP;
+                        console.log(remaining);
+                        $("#atk4PP").text(remaining + "/5");
+                        if(remaining === 0){
+                            $("#atk4").addClass("disabled");
+                            $("#atk4").attr("disabled","true");
+                         }
                     });
                 } else if (this.userChoice === "bulbasaurStart") {
                     // setup pokemon
@@ -345,7 +418,7 @@ window.onload = function() {
                     moveList.attr("class","moveList");
                     moveList.addClass("moveList");
                     $(".container").append(moveList);
-                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Tackle</button> <button id='atk2' class='btn btn-lg btn-success'>Vine Whip</button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-success'>Razor Leaf</button> <button id='atk4' class='btn btn-lg btn-success'>Solar Beam</button></div>")
+                    moveList.html("<div class='row firstRow'><button id='atk1' class='btn btn-lg btn-light'>Tackle <span id='atk1PP'>25/25</span></button> <button id='atk2' class='btn btn-lg btn-success'>Vine Whip <span id='atk2PP'>20/20</span></button></div> <div class='row secondRow'><button id='atk3' class='btn btn-lg btn-success'>Razor Leaf <span id='atk3PP'>10/10</span></button> <button id='atk4' class='btn btn-lg btn-success'>Solar Beam <span id='atk4PP'>5/5</span></button></div>")
 
                     // set stage
                     this.setStage();
@@ -364,6 +437,13 @@ window.onload = function() {
                          game.charmanderAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.bulbasaur.movesPP.tacklePP;
+                        console.log(remaining);
+                        $("#atk1PP").text(remaining + "/25");
+                        if(remaining === 0){
+                            $("#atk1").addClass("disabled");
+                            $("#atk1").attr("disabled","true");
+                         }
                     });
                     $("#atk2").click(function(){
                         console.log(game.charmander.HP);
@@ -381,6 +461,13 @@ window.onload = function() {
                          game.charmanderAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.bulbasaur.movesPP.vineWhipPP;
+                        console.log(remaining);
+                        $("#atk2PP").text(remaining + "/20");
+                        if(remaining === 0){
+                            $("#atk2").addClass("disabled");
+                            $("#atk2").attr("disabled","true");
+                         }
                     });
                     $("#atk3").click(function(){
                         console.log(game.charmander.HP);
@@ -398,6 +485,13 @@ window.onload = function() {
                          game.charmanderAttack();
                          game.updatePoke1HPBar();
                          game.winLoseCheck();
+                        var remaining = --game.bulbasaur.movesPP.razorLeafPP;
+                        console.log(remaining);
+                        $("#atk3PP").text(remaining + "/10");
+                        if(remaining === 0){
+                            $("#atk3").addClass("disabled");
+                            $("#atk3").attr("disabled","true");
+                         }
                     });
                     $("#atk4").click(function(){
                         console.log(game.charmander.HP);
@@ -412,9 +506,16 @@ window.onload = function() {
                         $("#poke1HP").attr("aria-valuenow",health);
                         $("#poke1HP").text(health);
                         $("#poke1HP").css("width",pctHealth +"%");
-                         game.charmanderAttack();
-                         game.updatePoke1HPBar();
-                         game.winLoseCheck();
+                        game.charmanderAttack();
+                        game.updatePoke1HPBar();
+                        game.winLoseCheck();
+                        var remaining = --game.bulbasaur.movesPP.solarBeamPP;
+                        console.log(remaining);
+                        $("#atk4PP").text(remaining + "/5");
+                        if(remaining === 0){
+                            $("#atk4").addClass("disabled");
+                            $("#atk4").attr("disabled","true");
+                         }
                     });
                 };
             }
